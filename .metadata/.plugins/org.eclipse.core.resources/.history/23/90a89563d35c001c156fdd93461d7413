@@ -1,0 +1,50 @@
+package examne1ev;
+
+import java.util.Scanner;
+
+public class Ejer4e {
+
+	public static void main(String[] args) {
+
+
+		Scanner teclado = new Scanner(System.in);
+		int n,m,cont=0;
+		String correo,pl,dom;
+		final String corre=("QWERTYUIOPASDFGHJKLÑZCXVBNM.-_");
+		boolean correcto = false;
+		while(correcto == false) {
+			System.out.println("Introduce una de direccion de correo válida");
+			correo = teclado.next();
+			correo = correo.toUpperCase();
+			correcto = true;
+			for(n=0;n<correo.length() && correcto == true;++n) {
+				if(corre.indexOf(correo.charAt(n))>=0)correcto=true;
+				if(correo.charAt(n)=='.') {
+					if(correo.charAt(n-1)=='.')correcto = false;{
+					if(n==0||n==correo.length()-1 )correcto = false;}
+				}}
+			pl = correo.substring(0,correo.indexOf("@")-1);
+			dom = correo.substring(correo.indexOf("@")+1,correo.length());
+			if(correo.indexOf("@")<=64 && correcto==true) {
+				if(correo.length()<=254 && correo.length()>0) {
+					m= pl.length();
+					correcto = true;
+					if(correcto==true) {
+						m= dom.length();
+						for(n=0;n<m && correcto == true;++n) {
+							if(corre.indexOf(dom.charAt(n))>=0)correcto=true;
+							else correcto = false;
+							if(dom.charAt(n)=='.')cont=0;
+							++cont;
+							if(cont>63)correcto=false;	
+							if(pl.charAt(n)=='_' )correcto = false;
+						}
+					}
+					
+				}
+			}if(correcto == false)System.out.println("La direccion de correo es invalida");
+					if(correcto == true)System.out.println("La direccion de correo es valida");
+		}
+	}
+}
+
